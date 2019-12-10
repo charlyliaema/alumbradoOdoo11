@@ -1,0 +1,19 @@
+<odoo>
+
+        <record model="alumbrado.solicitud" id="solicitud0">
+            <field name="name">Solicitud 0</field>
+            <field name="description">Solicitud 0's description
+
+Can have multiple lines
+            </field>
+        </record>
+        <record model="alumbrado.solicitud" id="solicitud1">
+            <field name="name">Solicitud 1</field>
+            <!-- no description for this one -->
+        </record>
+        <record model="alumbrado.solicitud" id="solicitud2">
+            <field name="name">Solicitud 2</field>
+            <field name="description">Solicitud 2's description</field>
+        </record>
+
+</odoo>

@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+        <!-- Tree luminarias -->
+        <record id="tree_alumbrado_luminarias" model="ir.ui.view">
+            <field name="name">alumbrado.luminarias.tree.view</field>
+            <field name="model">alumbrado.luminarias</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <!--<field name="xap_comp"/>-->
+                    <field name="xap"/>
+                    <field name="cvecol"/>
+                    <field name="calle"/>
+                    <field name="entre"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Form luminarias -->
+        <record id="form_alumbrado_luminarias" model="ir.ui.view">
+            <field name="name">alumbrado.luminarias.opciones.form.view</field><!--por que opciones?-->
+            <field name="model">alumbrado.luminarias</field>
+            <field name="arch" type="xml">
+                <form>
+                <sheet>            
+                    <group string="Datos de ubicacion del reporte">
+                        <field name="xap_comp" readonly="1" force_save="1"/><!--readonly="1" force_save="1"?-->
+                        <field name="cvecol"/>
+                        <field name="xap"/>
+                        <field name="x"/>
+                        <field name="y"/>
+                        <field name="calle"/>
+                        <field name="entre"/>
+                    </group>
+                    <group>
+                        <field name="geom" widget="geo_edit_map"/>
+                    </group>
+                </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- GeoEngine views luminarias 
+        <record id="ir_ui_view_alumbrado_luminarias" model="ir.ui.view">
+            <field name="name">alumbrado.luminarias.geo_view</field>
+            <field name="arch" type="xml">
+                <geoengine version="7.0">
+                    <field name="geom"/>
+                </geoengine>
+            </field>
+            <field eval="16" name="priority"/>
+            <field name="model">alumbrado.luminarias</field>
+        </record>
+
+        <record id="geoengine_raster_alumbrado_luminarias" model="geoengine.raster.layer">
+            <field name="raster_type">osm</field>
+            <field name="name">Luminaria</field>
+            <field name="view_id" ref="ir_ui_view_alumbrado_luminarias"/>
+            <field eval="0" name="overlay"/>
+        </record>-->
+
+        <!--Action luminarias-->
+        <record id="action_alumbrado_luminarias" model="ir.actions.act_window">
+            <field name="name">Luminarias</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">alumbrado.luminarias</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Tree colonias -->
+        <record id="tree_alumbrado_colonias" model="ir.ui.view">
+        <field name="name">alumbrado.colonias.tree.view</field>
+        <field name="model">alumbrado.colonias</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="id"/>
+                <field name="name"/>
+            </tree>
+        </field>
+        </record>
+
+        <!-- Form colonias -->
+        <record id="form_alumbrado_colonias" model="ir.ui.view">
+        <field name="name">alumbrado.colonias.form.view</field>
+        <field name="model">alumbrado.colonias</field>
+        <field name="arch" type="xml">
+            <form>
+            <sheet>            
+                <group>
+                <field name="name"/>
+                </group>
+            </sheet>
+            </form>
+        </field>
+        </record>
+
+        <!--Action colonias-->
+        <record id="action_alumbrado_colonias" model="ir.actions.act_window">
+            <field name="name">Colonias</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">alumbrado.colonias</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Tree reportes -->
+        <record id="tree_alumbrado_reportes" model="ir.ui.view">
+        <field name="name">alumbrado.reportes.tree.view</field>
+        <field name="model">alumbrado.reportes</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="colonia"/>
+                <field name="solicitante"/>
+                <field name="luminaria"/>
+                <field name="estatus"/>
+                <field name="create_date" string="Fecha"/>
+            </tree>
+        </field>
+        </record>
+
+        <!-- Form reportes -->
+        <record id="form_alumbrado_reportes" model="ir.ui.view">
+        <field name="name">alumbrado.reportes.form.view</field>
+        <field name="model">alumbrado.reportes</field>
+        <field name="arch" type="xml">
+            <form>
+            <sheet>            
+                <group>
+                    <field name="name"/>
+                    <field name="description"/>
+                    <field name="solicitante"/>
+                    <field name="luminaria"/>
+                    <field name="estatus"/>
+                </group>
+            </sheet>
+            </form>
+        </field>
+        </record>
+
+        <!--Action reportes-->
+        <record id="action_alumbrado_reportes" model="ir.actions.act_window">
+            <field name="name">Reportes</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">alumbrado.reportes</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+
+        <!-- Tree vehiculo-->
+        <record id="tree_alumbrado_vehiculo" model="ir.ui.view">
+        <field name="name">alumbrado.vehiculo.tree.view</field>
+        <field name="model">alumbrado.vehiculo</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="tipoVehiculo"/>
+                <field name="numero"/>
+            </tree>
+        </field>
+        </record>
+
+        <!-- Form vehiculo -->
+        <record id="form_alumbrado_vehiculo" model="ir.ui.view">
+        <field name="name">alumbrado.vehiculo.form.view</field>
+        <field name="model">alumbrado.vehiculo</field>
+        <field name="arch" type="xml">
+            <form>
+            <sheet>            
+                <group>
+                    <field name="marca"/>
+                    <field name="numero"/>
+                    <field name="tipoVehiculo"/>
+                    <field name="modelo"/>
+                    <field name="placas"/>
+                </group>
+            </sheet>
+            </form>
+        </field>
+        </record>
+
+        <!--Action vehiculo-->
+        <record id="action_alumbrado_vehiculo" model="ir.actions.act_window">
+            <field name="name">Vehiculo</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">alumbrado.vehiculo</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        
+        <!--Tree Jefe de cuadrilla-->
+        <record id="tree_alumbrado_jefe_cuadrilla" model="ir.ui.view">
+        <field name="name">alumbrado.jefe_cuadrilla.tree.view</field>
+        <field name="model">alumbrado.jefe_cuadrilla</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="cuadrilla"/>
+                <field name="telefono"/>
+                <field name="turno"/>
+            </tree>
+        </field>
+        </record>
+
+        <!--Form Jefe de cuadrilla -->
+        <record id="form_alumbrado_jefe_cuadrilla" model="ir.ui.view">
+        <field name="name">alumbrado.jefe_cuadrilla.form.view</field>
+        <field name="model">alumbrado.jefe_cuadrilla</field>
+        <field name="arch" type="xml">
+            <form>
+            <sheet>            
+                <group>
+                    <field name="cuadrilla"/>
+                    <field name="turno"/>
+                    <field name="numero"/>
+                    <field name="telefono"/>                   
+                </group>
+            </sheet>
+            </form>
+        </field>
+        </record>
+
+        <!--Action Jefe de cuadrilla-->
+        <record id="action_alumbrado_jefe_cuadrilla" model="ir.actions.act_window">
+            <field name="name">Jefe de Cuadrilla</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">alumbrado.jefe_cuadrilla</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!--Tree ATENCION de reportes
+        <record id="tree_alumbrado_atencion_reportes" model="ir.ui.view">
+        <field name="name">alumbrado.atencion_reportes.tree.view</field>
+        <field name="model">alumbrado.atencion_reportes</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="cuadrilla"/>
+                <field name="turno"/>
+            </tree>
+        </field>
+        </record>
+
+        Form ATENCION de reportes
+        <record id="form_alumbrado_atencion_reportes" model="ir.ui.view">
+        <field name="name">alumbrado.atencion_reportes.form.view</field>
+        <field name="model">alumbrado.atencion_reportes</field>
+        <field name="arch" type="xml">
+            <form>
+            <sheet>            
+                <group>
+                    <field name="cuadrilla"/>
+                    <field name="turno"/>
+                    <field name="numero"/>              
+                </group>
+            </sheet>
+            </form>
+        </field>
+        </record>
+
+        <Action ATENCION de reportes
+        <record id="action_alumbrado_atencion_reportes" model="ir.actions.act_window">
+            <field name="name">Atencion de Reportes</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">alumbrado.atencion_reportes</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <Tree RESPUESTAS de atencion
+        <record id="tree_alumbrado_respuestas_atencion" model="ir.ui.view">
+        <field name="name">alumbrado.respuestas_atencion.tree.view</field>
+        <field name="model">alumbrado.respuestas_atencion</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="estatus"/>
+                <field name="material"/>
+            </tree>
+        </field>
+        </record>
+
+        <Form RESPUESTAS de atencion
+        <record id="form_alumbrado_respuestas_atencion" model="ir.ui.view">
+        <field name="name">alumbrado.respuestas_atencion.form.view</field>
+        <field name="model">alumbrado.respuestas_atencion</field>
+        <field name="arch" type="xml">
+            <form>
+            <sheet>            
+                <group>
+                    <field name="estatus"/>
+                    <field name="material"/>            
+                    <field name="motivo"/> 
+                </group>
+            </sheet>
+            </form>
+        </field>
+        </record>
+
+        <Action RESPUESTAS de atencion
+        <record id="action_alumbrado_respuestas_atencion" model="ir.actions.act_window">
+            <field name="name">Respuestas de Atencion de Reportes</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">alumbrado.respuestas_atencion</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <Tree ALAMACEN
+        <record id="tree_alumbrado_almacen" model="ir.ui.view">
+        <field name="name">alumbrado.almacen.tree.view</field>
+        <field name="model">alumbrado.almacen</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="material"/>
+                <field name="vale"/> 
+            </tree>
+        </field>
+        </record>
+
+        <Form ALAMACEN-
+        <record id="form_alumbrado_almacen" model="ir.ui.view">
+        <field name="name">alumbrado.almacen.form.view</field>
+        <field name="model">alumbrado.almacen</field>
+        <field name="arch" type="xml">
+            <form>
+            <sheet>            
+                <group>
+                    <field name="material"/>
+                    <field name="vale"/>            
+                </group>
+            </sheet>
+            </form>
+        </field>
+        </record>
+
+        <!Action ALAMACEN
+        <record id="action_alumbrado_almacen" model="ir.actions.act_window">
+            <field name="name">Almacen</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">alumbrado.almacen</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        -->
+        <!--Menus-->
+        <menuitem id="alumbrado_menu_root" name="Subdirección de Gestión de Energía" sequence="1"/>
+
+        <menuitem id="alumbrado_misluminarios_menu_category" name="Subdireccion Eenergia XALAPA" sequence="1" parent="alumbrado_menu_root"/>
+        
+        <menuitem id="action_alumbrado_luminarias_menu" name="Luminarias" sequence="2" parent="alumbrado_misluminarios_menu_category" action="action_alumbrado_luminarias"/>
+        <menuitem id="action_alumbrado_colonias_menu" name="Colonias" sequence="3" parent="alumbrado_misluminarios_menu_category" action="action_alumbrado_colonias"/>
+        
+
+        <menuitem id="alumbrado_reportes_menu" name="Reportes" sequence="2" parent="alumbrado_menu_root" action="action_alumbrado_reportes"/>
+        <menuitem id="action_alumbrado_vehiculo_menu" name="Vehiculo" sequence="4" parent="alumbrado_misluminarios_menu_category" action="action_alumbrado_vehiculo"/>
+        <menuitem id="action_alumbrado_jefe_cuadrilla_menu" name="Jefe de Cuadrilla" sequence="5" parent="alumbrado_misluminarios_menu_category" action="action_alumbrado_jefe_cuadrilla"/>
+        <!--<menuitem id="action_alumbrado_atencion_reportes_menu" name="Atencion de Reportes" sequence="6" parent="alumbrado_misluminarios_menu_category" action="action_alumbrado_atencion_reportes"/>-->
+        <!--<menuitem id="action_alumbrado_respuestas_atencion_menu" name="Respuestas de Atencion de Reportes" sequence="7" parent="alumbrado_misluminarios_menu_category" action="action_alumbrado_respuestas_atencion"/>-->
+        <!--<menuitem id="action_alumbrado_almacen_menu" name="Almacen" sequence="8" parent="alumbrado_misluminarios_menu_category" action="action_alumbrado_almacen"/>-->
+</odoo>
+
