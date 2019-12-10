@@ -29,23 +29,23 @@ class luminarias(geo_model.GeoModel):
 	marca_foco = fields.Char(string="marca de foco")
 	marca_bala = fields.Char(string="marca de balastra")
 	
-    perdidas = fields.Integer(string="datod e perdidas de energia")
+	perdidas = fields.Integer(string="datod e perdidas de energia")
 	
-    tension = fields.Char(string="tension baja o alta")
+	tension = fields.Char(string="tension baja o alta")
 	
-    tipodeilum = fields.Char(string="tipo de iluminacion")
+	tipodeilum = fields.Char(string="tipo de iluminacion")
 	
-    zona_cfe = fields.Char(string="zona de cfe")
+	zona_cfe = fields.Char(string="zona de cfe")
 	tipoposte = fields.Char(string="tipo de poste")
 	no_lum = fields.Float(string="numero de luminarios en el poste")
 	altura_p = fields.Float(string="altura del poste")
 	altura_lum = fields.Char(string="altura del luminario")
 	brazo = fields.Char(string="numero de brazos en el poste")
 	
-    jefe_cua = fields.Char(string="jefe de cuadrilla")
+	jefe_cua = fields.Char(string="jefe de cuadrilla")
 	unidad = fields.Integer(string="numero de vehiculo")
 	
-    fecha_cens = fields.Date(string="fecha del censo")
+	fecha_cens = fields.Date(string="fecha del censo")
 	imagen = fields.Char(string="imagen de los luminarios")
 	x = fields.Float(string="Coordenada X")
 	y = fields.Float(string="Coordenada Y")
@@ -96,6 +96,7 @@ class luminarias(geo_model.GeoModel):
 			record[0]['geom'] = self.ConvertGeoJson(record[0]['geom'])
 		return record
 
+
 class colonias(models.Model):
 	_name = 'alumbrado.colonias'
 
@@ -122,6 +123,7 @@ class vehiculo(models.Model):
 	modelo = fields.Date(string="Modelo del vehiculo")
 	placas = fields.Char(string="numero de placas")
 
+
 class jefe_cuadrilla(models.Model):
 	_name = 'alumbrado.jefe_cuadrilla'
 
@@ -130,30 +132,31 @@ class jefe_cuadrilla(models.Model):
 	telefono = fields.Char(string="telefono del Jefe de cuadrilla", related="cuadrilla.phone")
 	turno = fields.Selection([('M','Matutino'),('V','Vespertino'),('F','Fin de Semana'),('S','Sabado')], string="Turno de jefe de Cuadrilla")
 
+
 #####################################################################################################################
 class atencion_reportes(models.Model):
-    _name = 'alumbrado.atencion_reportes'
-    
-    #id = fields.Many2one(comodel_name='alumbrado.reportes', string="numero de reporte")#como poner el id
-    numero = fields.Many2one(comodel_name='alumbrado.vehiculo', string="numero de vehiculo")
-    turno = fields.Many2one(comodel_name='alumbrado.jefe_cuadrilla', string="Turno de jefe de Cuadrilla")
-    cuadrilla = fields.Many2one(comodel_name='res.partner', string="Jefe de Cuadrilla")
- class respuestas_atencion(models.Model):
+	_name = 'alumbrado.atencion_reportes'
+
+	#id = fields.Many2one(comodel_name='alumbrado.reportes', string="numero de reporte")#como poner el id
+	numero = fields.Many2one(comodel_name='alumbrado.vehiculo', string="numero de vehiculo")
+	turno = fields.Many2one(comodel_name='alumbrado.jefe_cuadrilla', string="Turno de jefe de Cuadrilla")
+	cuadrilla = fields.Many2one(comodel_name='res.partner', string="Jefe de Cuadrilla")
+
+
+class respuestas_atencion(models.Model):
 	_name = 'alumbrado.respuestas_atencion'
-    
-    estatus = fields.Many2one(comodel_name='alumbrado.reportes', string="Estatus")
-    material = fields.Many2one(comodel_name='alumbrado.almacen', string="material del almacen") 
-    motivo = fields.Selection([('B','Falta Balastra'),('C','Falta Cable'),('F','Falta Grua'),('G','Falta Escalera Grande'),('F','Falta Foco'),('M','Falta Material'),('P','Falta Poste')], string="Motivo No se atendio")
- class almacen(models.Model):
+
+	estatus = fields.Many2one(comodel_name='alumbrado.reportes', string="Estatus")
+	material = fields.Many2one(comodel_name='alumbrado.almacen', string="material del almacen")
+	motivo = fields.Selection([('B','Falta Balastra'),('C','Falta Cable'),('F','Falta Grua'),('G','Falta Escalera Grande'),('F','Falta Foco'),('M','Falta Material'),('P','Falta Poste')], string="Motivo No se atendio")
+
+
+class almacen(models.Model):
 	_name = 'alumbrado.almacen'
-    
-    material = fields.Char(string="material del almacen")
-    vale = fields.Char(string="numero de vale")
-    factura = fields.Char(string="numero de factura")
-    proveedor = fields.Char(string="Preveedor")#¿provedor se pone en res.partner?
-    recibe = fields.Char(string="nombre de quien recibe material")#¿recibe se pone en res.partner?
+
+	material = fields.Char(string="material del almacen")
+	vale = fields.Char(string="numero de vale")
+	factura = fields.Char(string="numero de factura")
+	proveedor = fields.Char(string="Preveedor")#¿provedor se pone en res.partner?
+	recibe = fields.Char(string="nombre de quien recibe material")#¿recibe se pone en res.partner?
 ########################################################################################################################
-
-	
-
-		   
